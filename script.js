@@ -24,7 +24,7 @@ function createGrid(size) {
     
 }
 
-createGrid(16);
+createGrid(64);
 
 function setGridColour(box, colour) {
     box.style.backgroundColor = paintColour;
