@@ -4,6 +4,7 @@ let paintColour = "rgb(0, 0, 0)";
 let randomColour = false;
 const pickerContainer = document.querySelector(".pickerBoxes");
 const rainbowButton = document.querySelector(".rainbowBtn");
+const resizeButton = document.querySelector(".sizeBtn");
 
 function createGrid(size) {
     for(i = 0; i < size; i++) {
@@ -62,10 +63,23 @@ function toggleRainbow(){
     }
 }
 
-rainbowButton.addEventListener("click", toggleRainbow)
-    
+function resizeCanvas(){
+    let newSize = window.prompt("New Canvas Size(16-100):");
+    if (newSize > 100){
+        newSize = 100;
+    } else if (newSize < 16) {
+        newSize = 16
+    }
+    container.innerHTML = "";
+    console.log(newSize)
+    createGrid(newSize);
+}
+
+rainbowButton.addEventListener("click", toggleRainbow);
+
+resizeButton.addEventListener("click", resizeCanvas);
 
 
 
-createGrid(64);
+createGrid(16);
 fillPickerBox();
