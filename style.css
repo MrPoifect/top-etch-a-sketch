@@ -1,6 +1,59 @@
 body {
 
-    background-color: aquamarine;
+    background-color: rgb(134, 64, 91);
+    
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-style: bold;
+    font-size: 55px;
+}
+
+.sizeBtn {
+    font-size: 25px;
+    margin-bottom: 35px;
+}
+
+.pickerBar {
+    display: flex;
+    flex-direction: column;
+
+    margin: 24px;
+    padding: 12px;
+}
+
+.pickerTitle {
+    font-size: 36px;
+    align-self: center;
+    margin: 0px;
+    margin-bottom: 12px;
+}
+
+.pickerBoxes {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(158, 158, 158);
+}
+
+.pickerBox {
+    width: 60px;
+    height: 60px;
+    flex: 1 1 auto;
+    margin: 12px;
+    gap: 12px;
+}
+
+.rainbowBtn {
+    font-size: 24px;
+    margin: 12px 200px 0px 200px;
+    padding: 12px;
 }
 
 #container {
@@ -14,13 +67,14 @@ body {
     flex-basis: auto;
     justify-content: center;
     padding: 6px;
+    
 }
 
 
 .box {
     width: 30px;
 
-    background-color: rgb(124, 124, 124);
+    background-color: rgb(204, 204, 204);
     display: flex;
     justify-content: stretch;
     flex: 1 1 0

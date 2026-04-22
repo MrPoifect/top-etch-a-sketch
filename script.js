@@ -1,6 +1,9 @@
 const container = document.querySelector("#container");
-const defaultColour = "rgb(185, 185, 185)";
-let paintColour = "rgb(243, 0, 0)";
+const defaultColour = "rgb(226, 226, 226)";
+let paintColour = "rgb(0, 0, 0)";
+let randomColour = false;
+const pickerContainer = document.querySelector(".pickerBoxes");
+const rainbowButton = document.querySelector(".rainbowBtn");
 
 function createGrid(size) {
     for(i = 0; i < size; i++) {
@@ -16,20 +19,53 @@ function createGrid(size) {
             column.addEventListener("mouseenter", function(){
                 setGridColour(column, paintColour)
             });
-            column.addEventListener("mouseleave", function(){
-                revertGridColour(column)
-            });
         }
     }
     
 }
 
-createGrid(64);
-
 function setGridColour(box, colour) {
     box.style.backgroundColor = paintColour;
+    if (randomColour) {
+        paintColour = randomiseColour();
+    }
 }
 
-function revertGridColour(box) {
-    box.style.backgroundColor = defaultColour;
+
+function randomiseColour() {
+    let r = Math.random() * (255 - 1) + 1;
+    let g = Math.random() * (255 - 1) + 1;
+    let b = Math.random() * (255 - 1) + 1;
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
 }
+
+function fillPickerBox() {
+    for(i = 0; i < 10; i++) {
+        const box = document.createElement("div");
+        box.classList.add("pickerBox");
+        const col = randomiseColour();
+        box.style.backgroundColor = col;
+        box.addEventListener("click", () => {
+            paintColour = col;
+        })
+        pickerContainer.appendChild(box);
+    }
+}
+
+function toggleRainbow(){
+    if (!randomColour){
+        randomColour = true
+        rainbowButton.textContent = "Rainbow Mode: On"
+    } else {
+        randomColour = false
+        rainbowButton.textContent = "Rainbow Mode: Off"
+    }
+}
+
+rainbowButton.addEventListener("click", toggleRainbow)
+    
+
+
+
+createGrid(64);
+fillPickerBox();
